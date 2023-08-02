@@ -1,47 +1,62 @@
 # shared-pieces
+## Blue formatter
+Here's some unformatted Python code that you can use to demonstrate how the Black or Blue formatter can format it:
 ```
-def init_custome_logger(
-    all_log_file_path: str,
-    error_log_file_path: str,
-    logging_level: str = 'DEBUG',
-    console_format: str = '%(process)s %(thread)s: %(asctime)s - %(filename)s:%(lineno)d - %(funcName)s -%(log_color)s'
-    ' %(levelname)s %(reset)s - %(message)s',
-    file_format: str = '%(process)s %(thread)s: %(asctime)s - %(filename)s:%(lineno)d - %(funcName)s - %(levelname)s -'
-    ' %(message)s',
-) -> logging.Logger:
-    """
-    Creating custom logger
-    """
-    # Setting console output handler
+def    example_function(   parameter1,parameter2  ):
+if(parameter1   and parameter2 ):
+print(   "Both parameters are true."   )
+else:
+print("At least one parameter is false.")
 
-    stream_formatter = ColoredFormatter(console_format)
-    logging_level_num = 20 if logging_level == 'INFO' else 10
-    max_bytes = 20 * 1024 * 1024  # 20MB максимальный размер лог файла
-    backup_count = 10
+```
+## Mypy
+Here's an example of Python code with some typing warnings and errors that you can use to demonstrate how mypy works:
 
-    # Setting log file output handler
-    file_handler = RotatingFileHandler(
-        filename=all_log_file_path, mode='a', maxBytes=max_bytes, backupCount=backup_count, encoding='utf-8'
-    )
-    file_handler.setFormatter(logging.Formatter(fmt=file_format))
-    file_handler.setLevel(logging_level_num)
+```
+def greet(name: str) -> str:
+    return "Hello, " + name
 
-    # Setting error log file output handler
-    error_file_handler = RotatingFileHandler(
-        filename=error_log_file_path, mode='a', maxBytes=max_bytes, backupCount=backup_count, encoding='utf-8'
-    )
-    error_file_handler.setFormatter(logging.Formatter(fmt=file_format))
-    error_file_handler.setLevel(logging.WARNING)
+result = greet(5)  # This will cause a type error
 
-    # Set ours handlers to root handler
-    logging.basicConfig(level=logging_level_num)
+numbers = [1, 2, 3, "four", 5]  # This list contains a mix of integers and a string
 
-    logger = logging.getLogger()
-    # Changing the output format of root stream handler
-    logger.handlers[0].setFormatter(stream_formatter)
+for num in numbers:
+    print(num + 1)  # This will cause a type error for the string concatenation
 
-    # logger.addHandler(stream_handler)
-    logger.addHandler(file_handler)
-    logger.addHandler(error_file_handler)
-    return logger
+def divide(a: int, b: int) -> float:
+    return a / b
+
+result = divide(10, 0)  # This will cause a division by zero error
+```
+
+Here's an example of Python code with some linting warnings and errors that you can use to demonstrate how Pylint works:
+```
+def example_function():
+    x = 10
+    y = 20
+    print(x, y)
+    
+example_function()
+
+def unused_variable():
+    unused_var = "This variable is unused"
+    
+unused_variable()
+
+def multiple_blank_lines():
+    result = 5
+    
+    
+    
+    return result
+
+multiple_blank_lines()
+
+a = 5
+b = 3
+c = a+b
+print(c)
+
+print("Hello World")
+
 ```
