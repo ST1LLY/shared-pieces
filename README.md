@@ -3,10 +3,15 @@
 Here's some unformatted Python code that you can use to demonstrate how the Black or Blue formatter can format it:
 ```
 def    example_function(   parameter1,parameter2  ):
-if(parameter1   and parameter2 ):
-print(   "Both parameters are true."   )
-else:
-print("At least one parameter is false.")
+    if(parameter1   and parameter2 ):
+        print(   "Both parameters are true."   )
+    else:
+        print("At least one parameter is false.")
+
+def   calculate_total(item1,  item2, item3,   discount   ):
+    total = item1 +item2+item3
+    final_total = total - discount
+    return final_total
 
 ```
 ## Mypy
